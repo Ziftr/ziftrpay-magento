@@ -3,7 +3,7 @@
     <sections>
         <payment>
             <groups>
-                <crypto translate="label" module="paygate">
+                <crypto translate="label" module="crypto">
                     <label>ZiftrCrypto Payment</label>
                     <sort_order>670</sort_order>
                     <show_in_default>1</show_in_default>

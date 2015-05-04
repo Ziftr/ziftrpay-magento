@@ -8,7 +8,7 @@
     <global>
         <blocks>
             <crypto>
-                <class>Ziftr_crypto_Block</class>
+                <class>Ziftr_Crypto_Block</class>
             </crypto>
             <ziftr_crypto_adminhtml>
                 <class>Ziftr_crypto_Block_Adminhtml</class>
@@ -16,7 +16,7 @@
         </blocks>
         <models>
             <crypto>
-                <class>Ziftr_crypto_Model</class>
+                <class>Ziftr_Crypto_Model</class>
             </crypto>
         </models>
         <resources>
@@ -39,6 +39,11 @@
                 </connection>
             </crypto_read>
         </resources>
+        <helpers>
+            <crypto>
+                <class>Ziftr_Crypto_Helper</class>
+            </crypto>
+        </helpers>
     </global>
     <default>
         <payment>
