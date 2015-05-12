@@ -45,11 +45,23 @@
             </crypto>
         </helpers>
     </global>
+    <frontend>
+        <routers>
+            <crypto>
+                <use>standard</use>
+                <args>
+                    <module>Ziftr_Crypto</module>
+                    <frontName>crypto</frontName>
+                </args>
+            </crypto>
+        </routers>
+    </frontend>
     <default>
         <payment>
             <crypto>
                 <active>1</active>
                 <model>crypto/pay</model>
+                <payment_action>authorize</payment_action>
                 <order_status>pending</order_status>
                 <title>ZiftrPay</title>
             </crypto>

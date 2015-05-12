@@ -18,12 +18,22 @@
  * @generator   http://www.mgt-commerce.com/kickstarter/ Mgt Kickstarter
  */
 
-class Ziftr_Crypto_TestController extends Mage_Core_Controller_Front_Action
+class Ziftr_Crypto_IndexController extends Mage_Core_Controller_Front_Action
 {
+	public function successAction()
+	{
+		echo "success ";
+		echo var_dump($_GET);
+	}
+
+	public function failureAction()
+	{
+		echo "failure";
+	}
+
     public function testAction()
     {
-    	echo "A";
-        // $this->loadLayout();
-        // $this->renderLayout();
+        $this->loadLayout();
+        $this->renderLayout();
     }
 }
