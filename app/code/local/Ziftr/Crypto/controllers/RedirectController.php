@@ -18,22 +18,28 @@
  * @generator   http://www.mgt-commerce.com/kickstarter/ Mgt Kickstarter
  */
 
-class Ziftr_Crypto_IndexController extends Mage_Core_Controller_Front_Action
+class Ziftr_Crypto_RedirectController extends Mage_Core_Controller_Front_Action
 {
 	public function successAction()
 	{
-		echo "success ";
-		echo var_dump($_GET);
+		$this->_redirect('checkout/onepage/success', array('_secure'=>true));
 	}
 
 	public function failureAction()
 	{
-		echo "failure";
+		$order = Mage::getModel('sales/order')->load($_GET["oid"]);
+		#cancel order
+        $order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true);
+        $order->save();
+
+        #restore customer's cart
+		$quote = Mage::getModel('sales/quote')->load($order->getQuoteId());
+		if ($quote->getId()){
+			$quote->setIsActive(true)->setReservedOrderId(NULL)->save();
+			Mage::getModel('checkout/session')->replaceQuote($quote);				
+		}
+		Mage::getModel('checkout/session')->unsLastRealOrderId();				
+		$this->_redirect('checkout/cart');
 	}
 
-    public function testAction()
-    {
-        $this->loadLayout();
-        $this->renderLayout();
-    }
 }
