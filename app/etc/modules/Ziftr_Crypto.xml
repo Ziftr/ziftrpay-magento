@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+     <modules>
+        <Ziftr_Crypto>
+            <active>true</active>
+            <codePool>local</codePool>    
+            <depends>
+                <Mage_Payment />
+            </depends>
+        </Ziftr_Crypto>
+     </modules>
+</config>
