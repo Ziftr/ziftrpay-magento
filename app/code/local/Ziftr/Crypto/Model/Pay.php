@@ -71,7 +71,6 @@ class Ziftr_Crypto_Model_Pay extends Mage_Payment_Model_Method_Abstract
 					)
 				));
 			}
-			
 			#get checkout link
 			$order_response = $order_request->getResponse();
 
