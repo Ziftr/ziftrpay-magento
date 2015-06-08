@@ -41,17 +41,14 @@ class Ziftr_Crypto_Model_Pay extends Mage_Payment_Model_Method_Abstract
 
 			$magento_order = $payment->getOrder();
 			$currency = $magento_order->getBaseCurrencyCode();
-			// TODO add these seller_order_success/failure_urls after testing locally
-			// Mage::log(Mage::getUrl('crypto/redirect') . 'failure?oid=' . $magento_order->getId());
-			// Mage::log(Mage::getUrl('crypto/redirect') . 'success');
 			$order_request = $order_request->post(
 				array(
 					'order' => array(
 						'currency_code' => "USD",
 						'is_shipping_required' => true,
 						'shipping_price' => $payment->getShippingAmount() * 100,
-						'seller_order_success_url' => "http://magentotest.com:8888/magento/crypto/redirect/success",
-						'seller_order_failure_url' => "http://magentotest.com:8888/magento/crypto/redirect/failure",
+						'seller_order_success_url' => Mage::getUrl('crypto/redirect') . 'success',
+						'seller_order_failure_url' => Mage::getUrl('crypto/redirect') . 'failure',
 						'seller_data' => array("magento_id" => $magento_order->getId())
 					)
 				)
@@ -80,9 +77,7 @@ class Ziftr_Crypto_Model_Pay extends Mage_Payment_Model_Method_Abstract
 					break;
 				}
 			}
-			//TODO replace url with
-			// Mage::getUrl('crypto/callback') . "/response";
-			$this->setupWebhook($api_config, 'http://magentotest.com:8888/magento/crypto/callback/response');
+			$this->setupWebhook($api_config, Mage::getUrl('crypto/callback') . "/response");
 
 			if (Mage::getSingleton('customer/session')->getRedirectUrl() === null){
 				Mage::throwException("Error getting ZiftrPay Checkout url.");
