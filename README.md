@@ -4,8 +4,10 @@ Use ZiftrPay's multi-currency payment system with your magento site.
 ## Setup
 Download the plugin or zip file https://github.com/Ziftr/ziftrpay-magento/archive/master.zip
 
-Copy the contents of the app folder to your Magento installation app files
-cp -nr ziftrpay-magento-master/app magento/app/
+Copy the contents of the app folder to your Magento installation app directory:
+e.g. if they are in the same folder:
+
+`cp -R ziftrpay-magento-master/app/. magento/app/`
 
 You will need a ZiftrPay merchant account:
 
